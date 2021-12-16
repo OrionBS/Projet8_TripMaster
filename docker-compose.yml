@@ -2,29 +2,27 @@ version: "3"
 services:
   gpsMicroService:
     image: gps_microservice
-    depends_on:
-      - tourguide
     hostname: gpsservice
     ports:
       - "8081:8081"
 
   rewardMicroService:
     image: reward_service
-    depends_on:
-      - tourguide
     hostname: rewardservice
     ports:
       - "8082:8082"
 
   tripPricerMicroService:
     image: trip_service
-    depends_on:
-      - tourguide
     hostname: trippricerservice
     ports:
       - "8083:8083"
 
   tourguide:
     image: tourguide
+    depends_on:
+    	- gpsMicroService
+    	- rewardMicroService
+    	- tripPricerMicroService
     ports:
       - "8080:8080"
