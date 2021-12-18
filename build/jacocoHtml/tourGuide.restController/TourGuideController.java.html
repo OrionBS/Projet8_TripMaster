@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TourGuideController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TourGuide</a> &gt; <a href="index.source.html" class="el_package">tourGuide.restController</a> &gt; <span class="el_source">TourGuideController.java</span></div><h1>TourGuideController.java</h1><pre class="source lang-java linenums">package tourGuide.restController;
+
+import com.jsoniter.output.JsonStream;
+import org.springframework.web.bind.annotation.*;
+import tourGuide.model.Provider;
+import tourGuide.model.User;
+import tourGuide.model.UserPreferences;
+import tourGuide.model.VisitedLocation;
+import tourGuide.service.TourGuideService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class TourGuideController {
+
+    private final TourGuideService tourGuideService;
+
+<span class="fc" id="L19">    public TourGuideController(TourGuideService tourGuideService) {</span>
+<span class="fc" id="L20">        this.tourGuideService = tourGuideService;</span>
+<span class="fc" id="L21">    }</span>
+
+    @GetMapping(&quot;/&quot;)
+    public String index() {
+<span class="fc" id="L25">        return &quot;Greetings from TourGuide!&quot;;</span>
+    }
+
+    @GetMapping(&quot;/getLocation&quot;)
+    public String getLocation(@RequestParam String userName) {
+<span class="fc" id="L30">        VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));</span>
+<span class="fc" id="L31">        return JsonStream.serialize(visitedLocation.location);</span>
+    }
+
+    @GetMapping(&quot;/getNearByAttractions&quot;)
+    public String getNearbyAttractions(@RequestParam String userName) {
+<span class="fc" id="L36">        VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));</span>
+<span class="fc" id="L37">        return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation));</span>
+    }
+
+    @GetMapping(&quot;/getRewards&quot;)
+    public String getRewards(@RequestParam String userName) {
+<span class="fc" id="L42">        return JsonStream.serialize(tourGuideService.getUserRewards(getUser(userName)));</span>
+    }
+
+    @GetMapping(&quot;/getAllCurrentLocations&quot;)
+    public String getAllCurrentLocations() {
+
+<span class="fc" id="L48">        List&lt;String&gt; userIdsMapping = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        for (User user : tourGuideService.getAllUsers()) {</span>
+<span class="fc" id="L50">            VisitedLocation visitedLocation = tourGuideService.getUserLocation(user);</span>
+<span class="fc" id="L51">            userIdsMapping.add(visitedLocation.userId + &quot; : {'longitude':&quot; + visitedLocation.location.longitude + &quot;,'latitude':&quot; + visitedLocation.location.latitude + &quot;}&quot;);</span>
+<span class="fc" id="L52">        }</span>
+
+<span class="fc" id="L54">        return JsonStream.serialize(userIdsMapping);</span>
+    }
+
+    @GetMapping(&quot;/getTripDeals&quot;)
+    public String getTripDeals(@RequestParam String userName) {
+<span class="fc" id="L59">        List&lt;Provider&gt; providers = tourGuideService.getTripDeals(getUser(userName));</span>
+<span class="fc" id="L60">        return JsonStream.serialize(providers);</span>
+    }
+
+    @GetMapping(path = &quot;/getUserPreferences&quot;)
+    public String getUserPreferences(@RequestParam String userName) {
+<span class="fc" id="L65">        return JsonStream.serialize(tourGuideService.getUser(userName).getUserPreferences().toString());</span>
+    }
+
+    @PostMapping(path = &quot;/setUserPreferences&quot;)
+    public String setUserPreferences(@RequestParam String userName, @RequestBody UserPreferences userPreferences) {
+<span class="fc" id="L70">        tourGuideService.getUser(userName).setUserPreferences(userPreferences);</span>
+<span class="fc" id="L71">        return JsonStream.serialize(userPreferences.toString());</span>
+    }
+
+    private User getUser(String userName) {
+<span class="fc" id="L75">        return tourGuideService.getUser(userName);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

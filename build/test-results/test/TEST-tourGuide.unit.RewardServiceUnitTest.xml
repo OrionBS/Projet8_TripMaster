@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tourGuide.unit.RewardServiceUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-18T16:35:07" hostname="OBS-Desktop" time="0.253">
+  <properties/>
+  <testcase name="testCalculateRewards()" classname="tourGuide.unit.RewardServiceUnitTest" time="0.253"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

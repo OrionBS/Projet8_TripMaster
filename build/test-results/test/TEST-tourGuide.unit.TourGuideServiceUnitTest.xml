@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tourGuide.unit.TourGuideServiceUnitTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-12-18T16:35:07" hostname="OBS-Desktop" time="0.029">
+  <properties/>
+  <testcase name="testAddUser()" classname="tourGuide.unit.TourGuideServiceUnitTest" time="0.014"/>
+  <testcase name="testGetUserRewards()" classname="tourGuide.unit.TourGuideServiceUnitTest" time="0.002"/>
+  <testcase name="testGetAllUsers()" classname="tourGuide.unit.TourGuideServiceUnitTest" time="0.004"/>
+  <testcase name="testGetUser()" classname="tourGuide.unit.TourGuideServiceUnitTest" time="0.002"/>
+  <testcase name="testGetTripDeals()" classname="tourGuide.unit.TourGuideServiceUnitTest" time="0.004"/>
+  <system-out><![CDATA[2021-12-18 17:35:07.402  INFO 47982 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2021-12-18 17:35:07.402 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2021-12-18 17:35:07.403 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2021-12-18 17:35:07.403 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2021-12-18 17:35:07.403 DEBUG 47982 --- [pool-3-thread-1] tourGuide.tracker.Tracker                : Begin Tracker. Tracking 1 users.
+2021-12-18 17:35:07.405 DEBUG 47982 --- [pool-3-thread-1] tourGuide.tracker.Tracker                : Tracker Time Elapsed: 0 seconds.
+2021-12-18 17:35:07.405 DEBUG 47982 --- [pool-3-thread-1] tourGuide.tracker.Tracker                : Tracker sleeping
+2021-12-18 17:35:07.405  INFO 47982 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2021-12-18 17:35:07.406 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2021-12-18 17:35:07.406 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2021-12-18 17:35:07.406 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2021-12-18 17:35:07.406 DEBUG 47982 --- [pool-5-thread-1] tourGuide.tracker.Tracker                : Begin Tracker. Tracking 1 users.
+2021-12-18 17:35:07.407 DEBUG 47982 --- [pool-5-thread-1] tourGuide.tracker.Tracker                : Tracker Time Elapsed: 0 seconds.
+2021-12-18 17:35:07.407 DEBUG 47982 --- [pool-5-thread-1] tourGuide.tracker.Tracker                : Tracker sleeping
+2021-12-18 17:35:07.410  INFO 47982 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2021-12-18 17:35:07.410 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2021-12-18 17:35:07.411 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2021-12-18 17:35:07.411 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2021-12-18 17:35:07.411 DEBUG 47982 --- [pool-7-thread-1] tourGuide.tracker.Tracker                : Begin Tracker. Tracking 1 users.
+2021-12-18 17:35:07.412 DEBUG 47982 --- [pool-7-thread-1] tourGuide.tracker.Tracker                : Tracker Time Elapsed: 0 seconds.
+2021-12-18 17:35:07.412 DEBUG 47982 --- [pool-7-thread-1] tourGuide.tracker.Tracker                : Tracker sleeping
+2021-12-18 17:35:07.412  INFO 47982 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2021-12-18 17:35:07.412 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2021-12-18 17:35:07.412 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2021-12-18 17:35:07.412 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2021-12-18 17:35:07.412 DEBUG 47982 --- [pool-9-thread-1] tourGuide.tracker.Tracker                : Begin Tracker. Tracking 1 users.
+2021-12-18 17:35:07.413 DEBUG 47982 --- [pool-9-thread-1] tourGuide.tracker.Tracker                : Tracker Time Elapsed: 0 seconds.
+2021-12-18 17:35:07.413 DEBUG 47982 --- [pool-9-thread-1] tourGuide.tracker.Tracker                : Tracker sleeping
+2021-12-18 17:35:07.414  INFO 47982 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2021-12-18 17:35:07.414 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Initializing users
+2021-12-18 17:35:07.415 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Created 1 internal test users.
+2021-12-18 17:35:07.415 DEBUG 47982 --- [    Test worker] tourGuide.service.TourGuideService       : Finished initializing users
+2021-12-18 17:35:07.415 DEBUG 47982 --- [ool-11-thread-1] tourGuide.tracker.Tracker                : Begin Tracker. Tracking 1 users.
+2021-12-18 17:35:07.415 DEBUG 47982 --- [ool-11-thread-1] tourGuide.tracker.Tracker                : Tracker Time Elapsed: 0 seconds.
+2021-12-18 17:35:07.418 DEBUG 47982 --- [ool-11-thread-1] tourGuide.tracker.Tracker                : Tracker sleeping
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
