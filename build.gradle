@@ -53,8 +53,9 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform();
+    useJUnitPlatform()
     finalizedBy jacocoTestReport
+    exclude '**/performance/TestPerformance.class'
 }
 
 jacoco {
@@ -62,6 +63,8 @@ jacoco {
 }
 
 jacocoTestReport {
+    dependsOn test
+
     reports {
         xml.enabled true
         csv.enabled false

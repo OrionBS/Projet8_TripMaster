@@ -40,28 +40,9 @@ public class Tracker extends Thread {
 				logger.debug("Tracker stopping");
 				break;
 			}
-
-			List<User> users = tourGuideService.getAllUsers();
-			logger.debug("Begin Tracker. Tracking " + users.size() + " users.");
-
 			stopWatch.start();
 
-			ExecutorService multiExecutorService = Executors.newFixedThreadPool(200);
-
-			users.forEach(u -> {
-				TrackerTask trackerTask = new TrackerTask(tourGuideService, u);
-				multiExecutorService.submit(trackerTask);
-			});
-
-			multiExecutorService.shutdown();
-			try {
-				if (!multiExecutorService.awaitTermination(15,TimeUnit.MINUTES)) {
-					logger.warn("Tracker timeout");
-				}
-			} catch (InterruptedException e) {
-				logger.error("Tracker error");
-				e.printStackTrace();
-			}
+			this.trackUser();
 
 			stopWatch.stop();
 			logger.debug("Tracker Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
@@ -74,5 +55,27 @@ public class Tracker extends Thread {
 			}
 		}
 
+	}
+
+	public void trackUser() {
+		List<User> users = tourGuideService.getAllUsers();
+		logger.debug("Begin Tracker. Tracking " + users.size() + " users.");
+
+		ExecutorService multiExecutorService = Executors.newFixedThreadPool(200);
+
+		users.forEach(u -> {
+			TrackerTask trackerTask = new TrackerTask(tourGuideService, u);
+			multiExecutorService.submit(trackerTask);
+		});
+
+		multiExecutorService.shutdown();
+		try {
+			if (!multiExecutorService.awaitTermination(15,TimeUnit.MINUTES)) {
+				logger.warn("Tracker timeout");
+			}
+		} catch (InterruptedException e) {
+			logger.error("Tracker error");
+			e.printStackTrace();
+		}
 	}
 }

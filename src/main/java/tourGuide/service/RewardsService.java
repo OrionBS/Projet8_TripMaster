@@ -1,6 +1,5 @@
 package tourGuide.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tourGuide.model.*;
 import tourGuide.proxy.GpsMicroServiceProxy;
@@ -22,8 +21,6 @@ public class RewardsService {
     private final GpsMicroServiceProxy gpsUtil;
     private final RewardCentralMicroServiceProxy rewardsCentral;
 
-    @Autowired
-    private RewardCentralMicroServiceProxy rewardCentralMicroServiceProxy;
 
     public RewardsService(GpsMicroServiceProxy gpsUtil, RewardCentralMicroServiceProxy rewardCentral) {
         this.gpsUtil = gpsUtil;
@@ -47,6 +44,10 @@ public class RewardsService {
         threadPool.awaitTermination(30, TimeUnit.MINUTES);
     }
 
+    /**
+     * Calcul les gains d'un utilisateur et les ajoute au données de l'utilisateur.
+     * @param user user en question.
+     */
     public void calculateRewards(User user) {
         List<VisitedLocation> userLocations = user.getVisitedLocations();
         List<Attraction> attractions = gpsUtil.getAttractions();
@@ -71,7 +72,7 @@ public class RewardsService {
     }
 
     private int getRewardPoints(Attraction attraction, User user) {
-        return rewardCentralMicroServiceProxy.getAttractionsRewardPoints(attraction.attractionId, user.getUserId());
+        return rewardsCentral.getAttractionsRewardPoints(attraction.attractionId, user.getUserId());
     }
 
     public double getDistance(Location loc1, Location loc2) {

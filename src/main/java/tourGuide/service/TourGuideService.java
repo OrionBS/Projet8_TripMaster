@@ -67,6 +67,11 @@ public class TourGuideService {
         }
     }
 
+    /**
+     * Récupère le meilleur forfait de voyage en fonctions des preférences l'utilisateur.
+     * @param user l'utilisateur en question.
+     * @return les providers personnalisés.
+     */
     public List<Provider> getTripDeals(User user) {
         int cumulativeRewardPoints = user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
         List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(),
@@ -75,6 +80,11 @@ public class TourGuideService {
         return providers;
     }
 
+    /**
+     * Récupère la dernière location de l'utilisateur et l'ajoute à ses données.
+     * @param user l'utilisateur en question.
+     * @return la dernière position visitée.
+     */
     public VisitedLocation trackUserLocation(User user) {
         VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
         user.addToVisitedLocations(visitedLocation);
@@ -82,6 +92,11 @@ public class TourGuideService {
         return visitedLocation;
     }
 
+    /**
+     * Récupère les 5 attractions les plus proches de la dernière position visitée de l'utilisateur.
+     * @param visitedLocation la dernière position de l'utilisateur.
+     * @return les 5 attractions les plus proches.
+     */
     public CloserAttractions getNearByAttractions(VisitedLocation visitedLocation) {
         List<AttractionDetails> attractionDetailsList = new ArrayList<>();
         for (Attraction attraction : gpsUtil.getAttractions()) {
